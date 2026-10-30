@@ -1,0 +1,159 @@
+# ============================================================
+#  GremiosGUI - configuración
+#  Todo lo que dice "Coronas" es la moneda que defines con
+#  /gremioadmin moneda set (objeto en la mano).
+# ============================================================
+
+gui:
+  # true = títulos con el resourcepack (arte dorado). false = títulos de texto y botones con items normales.
+  usar-resourcepack: true
+
+xp:
+  # XP para subir del nivel L al L+1:  L * por-nivel + base
+  por-nivel: 500
+  base: 1000
+  max-por-entrega: 2000
+  # 0 = sin tope
+  tope-diario-jugador: 0
+  tope-diario-repetibles: 600
+
+miembros:
+  # Máximo de miembros según nivel de territorio: Pueblo, Fortaleza, Reinado
+  max-por-nivel: [8, 20, 40]
+
+invitaciones:
+  expira-segundos: 300
+
+territorio:
+  max-volumen: 12000000
+  precio-defecto: 64
+  # Coste para subir de nivel (por defecto; cada territorio puede tener el suyo con /territorio precio)
+  mejora-fortaleza: 128
+  mejora-reinado: 512
+  nivel-gremio-fortaleza: 5
+  nivel-gremio-reinado: 12
+  # Al crear un territorio se guarda automáticamente su estado original
+  snapshot-al-crear: true
+  teleport-espera-segundos: 30
+
+snapshot:
+  # Milisegundos de trabajo por tick al guardar/restaurar (menos = más suave, más lento)
+  ms-por-tick: 30
+
+proteccion:
+  reclutas-construyen: false
+  reclutas-cofres: true
+
+banco:
+  # Rango mínimo para retirar: RECLUTA, MIEMBRO, OFICIAL, MARISCAL, LIDER
+  retiro-rango: OFICIAL
+
+mantenimiento:
+  # Cada cuántos días se cobra
+  dias: 7.0
+  # Coste por nivel de territorio (Pueblo, Fortaleza, Reinado)
+  costo-por-nivel: [8, 24, 64]
+  # Impagos seguidos antes de perder el territorio
+  impagos-max: 3
+
+mejoras:
+  guardia:
+    max: 5
+    costo-base: 32
+  nucleo:
+    max: 5
+    costo-base: 48
+    vida-por-nivel: 150
+  capacidad:
+    max: 5
+    costo-base: 24
+    miembros-por-nivel: 5
+
+raid:
+  # Rango mínimo para declarar un asedio
+  rango-minimo-declarar: MARISCAL
+  requiere-territorio: true
+  nivel-minimo-objetivo: 1
+  min-miembros-atacante: 2
+  # Coste de declarar (se paga del banco del gremio atacante)
+  costo-declarar: 16
+  # Minutos entre la declaración y el inicio
+  aviso-minutos: 720
+  duracion-minutos: 75
+  # Tiempo para saquear cuando el atacante gana
+  saqueo-minutos: 12
+  # Defensores conectados necesarios al empezar
+  min-defensores-online: 1
+  min-atacantes-online: 1
+  posponer-minutos: 30
+  max-posposiciones: 2
+  proteccion-nuevo-gremio-horas: 24
+  proteccion-tras-raid-horas: 6
+  cooldown-atacante-horas: 12
+  # Porcentaje del banco del defensor que se lleva el atacante si gana
+  saqueo-banco-pct: 25
+  xp-victoria: 800
+  xp-defensa: 400
+  # Ventana horaria (hora del servidor). Si activo, los raids solo empiezan dentro de la ventana.
+  ventana:
+    activo: false
+    inicio-hora: 18
+    fin-hora: 23
+  nodo:
+    vida: 1500
+    # Multiplicador del daño cuerpo a cuerpo (espadas, hachas...)
+    multiplicador-melee: 2.0
+    regen-por-segundo: 1.5
+    regen-espera-segundos: 30
+    # Si recibe más de "umbral" de daño en 10 s, se activa un escudo
+    escudo-umbral: 300
+    escudo-segundos: 8
+  guardias:
+    # Guardias del Capitán durante el raid: Pueblo, Fortaleza, Reinado (+2 por nivel de mejora Guardia)
+    por-nivel: [0, 3, 6]
+
+asedio:
+  max-unidades-por-gremio: 6
+  canon:
+    vida: 120
+    espera-segundos: 6
+    velocidad: 2.2
+  catapulta:
+    vida: 200
+    espera-segundos: 12
+    velocidad: 1.9
+    angulo: 50
+  capacidad-municion: 4
+  # Los bloques con resistencia a explosiones mayor que esto no se destruyen (obsidiana, etc.)
+  resistencia-maxima-bloque: 100
+  max-bloques-por-impacto: 90
+  max-bloques-danados-por-territorio: 250000
+  # Precios del Herrero de Asedio (Coronas) y cantidad por compra
+  precios:
+    CANON: 48
+    CATAPULTA: 96
+    BALA_HIERRO: 8
+    BALA_EXPLOSIVA: 16
+    BALA_INCENDIARIA: 12
+    PIEDRA_CATAPULTA: 12
+    PIEDRA_FUEGO: 14
+  cantidad-compra:
+    BALA_HIERRO: 4
+    BALA_EXPLOSIVA: 4
+    BALA_INCENDIARIA: 4
+    PIEDRA_CATAPULTA: 2
+    PIEDRA_FUEGO: 2
+  # Valores por munición (opcional: si no existe, se usan los de fábrica)
+  municion:
+    BALA_HIERRO: {nodo: 45, radio: 2.0, bloques: 1.5, jugador: 6}
+    BALA_EXPLOSIVA: {nodo: 70, radio: 3.0, bloques: 2.5, jugador: 10}
+    BALA_INCENDIARIA: {nodo: 35, radio: 2.5, bloques: 1.5, jugador: 5}
+    PIEDRA_CATAPULTA: {nodo: 90, radio: 3.5, bloques: 3.0, jugador: 8}
+    PIEDRA_FUEGO: {nodo: 60, radio: 3.5, bloques: 2.5, jugador: 6}
+  # Recetas de crafteo (además de comprarlas)
+  crafteo: true
+
+obras:
+  # Al reparar con Coronas del banco: 1 Corona por cada X bloques
+  bloques-por-corona: 25
+  max-bloques-por-operacion: 4000
